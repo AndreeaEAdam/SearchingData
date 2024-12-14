@@ -15,14 +15,14 @@ public class MainEvaluation {
     public static void main(String[] args) throws Exception {
         DataLoader dataLoader = new DataLoader();
 
-        List<String> jeopardyQuestions = dataLoader.loadQuestions("C:\\Users\\ASUS\\IdeaProjects\\SearchingData\\SearchingData\\src\\main\\resources\\data\\raw\\jeopardy_questions.txt");
-        Map<String, String> wikiData = dataLoader.loadWikipediaDataFromDirectory("C:\\Users\\ASUS\\IdeaProjects\\SearchingData\\SearchingData\\src\\main\\resources\\data\\raw\\wikipedia_articles");
-        Set<String> stopwords = dataLoader.loadStopwords("C:\\Users\\ASUS\\IdeaProjects\\SearchingData\\SearchingData\\src\\main\\resources\\data\\stopwords\\stopwords.txt");
+        List<String> jeopardyQuestions = dataLoader.loadQuestions("C:\\Users\\ASUS\\IdeaProjects\\SearchingData2\\searching\\src\\main\\resources\\data\\raw\\jeopardy_questions.txt");
+        Map<String, String> wikiData = dataLoader.loadWikipediaDataFromDirectory("C:\\Users\\ASUS\\IdeaProjects\\SearchingData2\\searching\\src\\main\\resources\\data\\raw\\wikipedia_articles");
+        Set<String> stopwords = dataLoader.loadStopwords("C:\\Users\\ASUS\\IdeaProjects\\SearchingData2\\searching\\src\\main\\resources\\data\\stopwords\\stopwords.txt");
 
-        WikiIndexer wikiIndexer = new WikiIndexer("C:\\Users\\ASUS\\IdeaProjects\\SearchingData\\SearchingData\\src\\main\\resources\\index");
+        WikiIndexer wikiIndexer = new WikiIndexer("C:\\Users\\ASUS\\IdeaProjects\\SearchingData2\\searching\\src\\main\\resources\\index");
         wikiIndexer.indexWikipediaData(wikiData);
 
-        WikiSearcher wikiSearcher = new WikiSearcher("C:\\Users\\ASUS\\IdeaProjects\\SearchingData\\SearchingData\\src\\main\\resources\\index");
+        WikiSearcher wikiSearcher = new WikiSearcher("C:\\Users\\ASUS\\IdeaProjects\\SearchingData2\\searching\\src\\main\\resources\\index");
         AnswerEvaluator answerEvaluator = new AnswerEvaluator(wikiSearcher, stopwords);
 
         for (String questionData : jeopardyQuestions) {
